@@ -7,7 +7,9 @@
       </el-col>
       <el-col :span="14"><h1 class="page-title">Shipment Real Time Monitoring</h1></el-col>
       <el-col :span="4">
-        <div class="user-img"></div>
+        <div class="user-img">
+          <img src="../assets/images/user_headshot.png" alt="Tom Smith">
+        </div>
       </el-col>
     </el-row>
 
@@ -38,7 +40,7 @@ export default {
 }
 .logo {
   width:200px;
-  background-image: url(../assets/cslogo.png);
+  background-image: url(../assets/images/cslogo.png);
   -webkit-background-size: cover;
   background-size: cover;
   height:76px;
@@ -49,7 +51,19 @@ export default {
   width:60px;
   height:60px;
   background-color: #fff;
-  float: right;
-  margin:10px;
+  position: absolute;
+  right:20px;
+  top:20px;
+  border-radius: 30px;
+}
+
+.user-img img{
+  width:60px;
+  height:60px;
+  line-height: 0;
+  display:inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  transition: liner 0.25s;
 }
 </style>

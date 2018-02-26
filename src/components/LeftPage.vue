@@ -5,27 +5,41 @@
     <div class="side-figure-wrapper">
       <el-row>
         <el-col :span="8" class="side-figure">
-          1
+           <div class="figure-circle">
+              <span>5</span>
+           </div>
+           <span class="figure-description">Potential Delay </span>
         </el-col>
-        <el-col :span="8">2</el-col>
-        <el-col :span="8">3</el-col>
+        <el-col :span="8" class="side-figure">
+           <div class="figure-circle">
+              <span>4</span>
+           </div>
+           <span class="figure-description">Arriving in 10 days</span>
+        </el-col>
+        <el-col :span="8" class="side-figure">
+           <div class="figure-circle">
+              <span>7</span>
+           </div>
+           <span class="figure-description">Inland Figures</span>
+        </el-col>
+
       </el-row>
     </div>
     <h3 class="side-section-title">Delay Shipment Severity</h3>
     <div class="filter-buttons">
-      <el-button class="filter-button-1">3</el-button>
-      <el-button class="filter-button-2">3</el-button>
-      <el-button class="filter-button-3">4</el-button>
-      <el-button class="filter-button-4">5</el-button>
-      <el-button class="filter-button-5">6</el-button>
-      <el-button class="filter-button-6">1</el-button>
+      <el-button class="filter-button-1" v-on:click="serverityFilter('1')">3</el-button>
+      <el-button class="filter-button-2" v-on:click="serverityFilter('2')">3</el-button>
+      <el-button class="filter-button-3" v-on:click="serverityFilter('3')">4</el-button>
+      <el-button class="filter-button-4" v-on:click="serverityFilter('4')">5</el-button>
+      <el-button class="filter-button-5" v-on:click="serverityFilter('5')">6</el-button>
+      <el-button class="filter-button-6" v-on:click="serverityFilter('6')">1</el-button>
     </div>
       <el-input placeholder="Search with Shipment Number" prefix-icon="el-icon-search"
       v-model="searchNum" clearable class="side-table-filter">
     </el-input>
-      <el-table ref="singleTable" :data="tableData" highlight-current-row
+      <el-table ref="singleTable" :data="tables" highlight-current-row
       @current-change="handleCurrentChange" class="side-table">
-      <el-table-column property="shipmentNum" label="Shipment #" width="120" filter-method="filterHandler">
+      <el-table-column property="shipmentNum" label="Shipment #" width="120">
       </el-table-column>
       <el-table-column property="from" label="From" width="120">
       </el-table-column>
@@ -49,39 +63,96 @@
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12'
+          containerNum: '12',
+          severityNum: '1'
         }, {
-          shipmentNum: '5503020090',
+          shipmentNum: '5503020091',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12'
+          containerNum: '12',
+          severityNum: '2'
         },{
-          shipmentNum: '5503020090',
+          shipmentNum: '5503020092',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12'
+          containerNum: '12',
+          severityNum: '3'
         }, {
-          shipmentNum: '5503020090',
+          shipmentNum: '5503020093',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12'
+          containerNum: '12',
+          severityNum: '4'
         },{
-          shipmentNum: '5503020090',
-          from: 'Yantian',
+          shipmentNum: '5403020094',
+          from: 'Hong Kong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12'
+          containerNum: '12',
+          severityNum: '5'
         }],
         currentRow: null,
         searchNum: '',
       }
     },
+    computed:{
+      tables:function(){
+        var searchNum = this.searchNum;
+        if(searchNum){
+          return this.tableData.filter(function(shipmentNum){
+            return Object.keys(shipmentNum).some(function(key){
+              return String(shipmentNum[key]).toLowerCase().indexOf(searchNum) > -1
+            })
+          })
+        }
+        return this.tableData;
+      }
+    },
     methods:{
-      filterHandler(value, row, column){
-
+      serverityFilter: function(filterNum){
+        var allData = [{
+          shipmentNum: '5503020090',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '1'
+        }, {
+          shipmentNum: '5503020091',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '2'
+        },{
+          shipmentNum: '5503020092',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '3'
+        }, {
+          shipmentNum: '5503020093',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '4'
+        },{
+          shipmentNum: '5403020094',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '5'
+        }];
+        if(filterNum){
+          var nowData = allData.filter(item => item.severityNum === filterNum)
+        }
+        this.tableData = nowData;
       }
     }
 
@@ -116,9 +187,36 @@
   }
 
 
+
+
   .side-figure {
-/*    background-color: #eee;
-    height:100px;*/
+    text-align: center;
+  }
+
+  .side-figure div {
+    margin:0 auto;
+  }
+  .figure-circle {
+    width:80px;
+    height:80px;
+    border-width:4px;
+    border-style: solid;
+    border-color: orange;
+    border-radius:45px;
+  }
+
+  .figure-circle span{
+    height:80px;
+    line-height:80px;
+    display: block;
+    color: #FFF;
+    text-align: center;
+    vertical-align: middle;
+    font-size:4.6rem;
+  }
+
+  .side-figure span.figure-description {
+    font-size: 1.4rem;
   }
 
   .filter-buttons .el-button{
