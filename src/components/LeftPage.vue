@@ -38,7 +38,7 @@
       v-model="searchNum" clearable class="side-table-filter">
     </el-input>
       <el-table ref="singleTable" :data="tables" highlight-current-row
-      @current-change="handleCurrentChange" class="side-table">
+       @current-change="handleCurrentChange" @row-click="changeMap" row-key="shipmentNum" class="side-table">
       <el-table-column property="shipmentNum" label="Shipment #" width="120">
       </el-table-column>
       <el-table-column property="from" label="From" width="120">
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import Bus from '../bus.js'
+
   export default {
     data() {
       return {
@@ -64,6 +66,8 @@
           to: 'Long Beach',
           destination: 'Los Angeles',
           containerNum: '12',
+          mapLoc: [33.7303,-118.1919],
+          mapZoom: 8,
           severityNum: '1'
         }, {
           shipmentNum: '5503020091',
@@ -71,7 +75,9 @@
           to: 'Long Beach',
           destination: 'Los Angeles',
           containerNum: '12',
-          severityNum: '2'
+          mapLoc: [32.8346634,-79.8785019],
+          mapZoom: 14,
+          severityNum: '2',
         },{
           shipmentNum: '5503020092',
           from: 'Yantian',
@@ -100,7 +106,7 @@
     },
     computed:{
       tables:function(){
-        var searchNum = this.searchNum;
+        var searchNum = this.searchNum.toLowerCase();
         if(searchNum){
           return this.tableData.filter(function(shipmentNum){
             return Object.keys(shipmentNum).some(function(key){
@@ -153,6 +159,16 @@
           var nowData = allData.filter(item => item.severityNum === filterNum)
         }
         this.tableData = nowData;
+      },
+      setCurrent(row) {
+        this.$refs.singleTable.setCurrentRow(row);
+      },
+      handleCurrentChange(val) {
+        this.currentRow = val;
+      },
+      changeMap(row) {
+        console.log(row.shipmentNum);
+        Bus.$emit('on',row.mapLoc,row.mapZoom);
       }
     }
 

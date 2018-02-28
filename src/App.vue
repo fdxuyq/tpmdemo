@@ -1,39 +1,48 @@
 <template>
-  <div id="app">
-
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-<!--     <TestPage msg="Map sample" /> -->
-
-  <el-row>
-    <el-col :span="24"><HeaderPage /></el-col>
-  </el-row>    <el-row :gutter="0">
-    <el-col :span="8"><div class="grid-content bg-purple"><LeftPage /></div></el-col>
-    <el-col :span="16"><div class="grid-content bg-purple"><KeyFiguresPage /><MapPage /></div></el-col>
-  </el-row>
+  <div id="wrapper">
+    <el-row>
+      <el-col :span="24"><HeaderPage /></el-col>
+    </el-row>    <el-row :gutter="0">
+      <el-col :span="8"><LeftPage /></el-col>
+      <el-col :span="16"><KeyFiguresPage /><MapPage /></el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import TestPage from './components/TestPage.vue';
+
+
 import HeaderPage from './components/HeaderPage.vue';
 import LeftPage from './components/LeftPage.vue';
 import MapPage from './components/MapPage.vue';
 import KeyFiguresPage from './components/KeyFiguresPage.vue';
 
+
+
+
+
 export default {
   name: 'app',
   components: {
-    // TestPage,
     HeaderPage,
     LeftPage,
     KeyFiguresPage,
-    MapPage
+    MapPage,
+
   }
 }
 </script>
 
 <style>
+/*.leaflet-fake-icon-image-2x {
+  background-image: url(../../node_modules/leaflet/dist/images/marker-icon-2x.png);
+}
+.leaflet-fake-icon-shadow {
+  background-image: url(../../node_modules/leaflet/dist/images/marker-shadow.png);
+}*/
+/*@import "../../node_modules/leaflet/dist/leaflet.css";*/
+
+
 html {
   font-size:62.5%;
 }
@@ -41,7 +50,7 @@ body{
   margin: 0;
   background-color: #30364d;
 }
-#app {
+#wrapper {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,6 +87,11 @@ body{
 .side-table .el-table__body tr.current-row> td , .side-table .el-table__body tr.hover-row.current-row>td,.side-table .el-table__body tr.hover-row.el-table__row--striped.current-row>td,.side-table .el-table__body tr.hover-row.el-table__row--striped>td,.side-table .el-table__body tr.hover-row>td{
   background-color: transparent!important;
 }
+
+.side-table .el-table__body tr:hover>td{
+  background-color: rgba(255,255,255,0.3)!important;
+}
+
 .side-table .el-table__body tr.current-row>td {
   border-width: 1px 0!important;
   border-style: solid;

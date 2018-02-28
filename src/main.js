@@ -1,23 +1,21 @@
 import Vue from 'vue'
+import App from './App.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 
-import App from './App.vue'
-import Vue2Leaflet from 'vue2-leaflet';
 
-Vue.component('v-map', Vue2Leaflet.Map);
-Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-Vue.component('v-marker', Vue2Leaflet.Marker);
-
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+
+
 
 new Vue({
   el: '#app',
   render: h => h(App)
 }).$mount('#app')
+
 
 
 // var mymap = L.map('mapid').setView([33.7303,-118.1919], 6);
