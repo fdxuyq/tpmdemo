@@ -5,7 +5,7 @@
       <el-col :span="6">
         <div class="logo"></div>
       </el-col>
-      <el-col :span="14"><h1 class="page-title">Shipment Real Time Monitoring</h1></el-col>
+      <el-col :span="14"><h1 class="page-title">Supply Chain Visibility Dashboard</h1></el-col>
       <el-col :span="4">
         <div class="user-img">
           <img src="../assets/images/user_headshot.png" alt="Tom Smith">

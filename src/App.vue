@@ -41,7 +41,10 @@ export default {
   background-image: url(../../node_modules/leaflet/dist/images/marker-shadow.png);
 }*/
 /*@import "../../node_modules/leaflet/dist/leaflet.css";*/
-
+* {
+  padding:0;
+  margin:0;
+}
 
 html {
   font-size:62.5%;

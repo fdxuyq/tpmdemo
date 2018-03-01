@@ -14,8 +14,7 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   render: h => h(App)
-}).$mount('#app')
-
+})
 
 
 // var mymap = L.map('mapid').setView([33.7303,-118.1919], 6);

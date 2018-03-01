@@ -20,19 +20,19 @@
            <div class="figure-circle">
               <span>7</span>
            </div>
-           <span class="figure-description">Inland Figures</span>
+           <span class="figure-description">Trucks</span>
         </el-col>
 
       </el-row>
     </div>
     <h3 class="side-section-title">Delay Shipment Severity</h3>
     <div class="filter-buttons">
-      <el-button class="filter-button-1" v-on:click="serverityFilter('1')">3</el-button>
-      <el-button class="filter-button-2" v-on:click="serverityFilter('2')">3</el-button>
-      <el-button class="filter-button-3" v-on:click="serverityFilter('3')">4</el-button>
-      <el-button class="filter-button-4" v-on:click="serverityFilter('4')">5</el-button>
-      <el-button class="filter-button-5" v-on:click="serverityFilter('5')">6</el-button>
-      <el-button class="filter-button-6" v-on:click="serverityFilter('6')">1</el-button>
+      <el-button class="filter-button-1" v-on:click="serverityFilter('0')">19</el-button>
+      <el-button class="filter-button-2" v-on:click="serverityFilter('1')">3</el-button>
+      <el-button class="filter-button-3" v-on:click="serverityFilter('2')">4</el-button>
+      <el-button class="filter-button-4" v-on:click="serverityFilter('3')">5</el-button>
+      <el-button class="filter-button-5" v-on:click="serverityFilter('4')">6</el-button>
+      <el-button class="filter-button-6" v-on:click="serverityFilter('5')">1</el-button>
     </div>
       <el-input placeholder="Search with Shipment Number" prefix-icon="el-icon-search"
       v-model="searchNum" clearable class="side-table-filter">
@@ -61,6 +61,46 @@ import Bus from '../bus.js'
     data() {
       return {
         tableData: [{
+          shipmentNum: '5503020090',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          mapLoc: [32.9081494,-118.1919],
+          mapZoom: 8,
+          severityNum: '1'
+        }, {
+          shipmentNum: '5503020091',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          mapLoc: [32.8346634,-79.8785019],
+          mapZoom: 14,
+          severityNum: '2',
+        },{
+          shipmentNum: '5503020092',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '3'
+        }, {
+          shipmentNum: '5503020093',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '4'
+        },{
+          shipmentNum: '5403020094',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '12',
+          severityNum: '5'
+        }],
+        allData: [{
           shipmentNum: '5503020090',
           from: 'Yantian',
           to: 'Long Beach',
@@ -119,44 +159,14 @@ import Bus from '../bus.js'
     },
     methods:{
       serverityFilter: function(filterNum){
-        var allData = [{
-          shipmentNum: '5503020090',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
-          severityNum: '1'
-        }, {
-          shipmentNum: '5503020091',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
-          severityNum: '2'
-        },{
-          shipmentNum: '5503020092',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
-          severityNum: '3'
-        }, {
-          shipmentNum: '5503020093',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
-          severityNum: '4'
-        },{
-          shipmentNum: '5403020094',
-          from: 'Hong Kong',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
-          severityNum: '5'
-        }];
+        var allData = this.allData;
         if(filterNum){
-          var nowData = allData.filter(item => item.severityNum === filterNum)
+          var nowData = allData;
+          if(filterNum === '0'){
+            // console.log(filterNum, "hi here is 0")
+          }else{
+            nowData = allData.filter(item => item.severityNum === filterNum);
+          }
         }
         this.tableData = nowData;
       },
@@ -167,7 +177,7 @@ import Bus from '../bus.js'
         this.currentRow = val;
       },
       changeMap(row) {
-        console.log(row.shipmentNum);
+        // console.log(row.shipmentNum);
         Bus.$emit('on',row.mapLoc,row.mapZoom);
       }
     }
