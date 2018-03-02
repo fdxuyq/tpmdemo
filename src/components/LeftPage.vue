@@ -27,12 +27,20 @@
     </div>
     <h3 class="side-section-title">Delay Shipment Severity</h3>
     <div class="filter-buttons">
-      <el-button class="filter-button-1" v-on:click="serverityFilter('0')">19</el-button>
-      <el-button class="filter-button-2" v-on:click="serverityFilter('1')">3</el-button>
-      <el-button class="filter-button-3" v-on:click="serverityFilter('2')">4</el-button>
-      <el-button class="filter-button-4" v-on:click="serverityFilter('3')">5</el-button>
-      <el-button class="filter-button-5" v-on:click="serverityFilter('4')">6</el-button>
-      <el-button class="filter-button-6" v-on:click="serverityFilter('5')">1</el-button>
+      <el-row>
+         <el-col :span="4"><el-button class="filter-button-1" v-on:click="serverityFilter('0')">19</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-2" v-on:click="serverityFilter('1')">3</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-3" v-on:click="serverityFilter('2')">4</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-4" v-on:click="serverityFilter('3')">4</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-5" v-on:click="serverityFilter('4')">4</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-6" v-on:click="serverityFilter('5')">1</el-button></el-col>
+       </el-row>
+
+
+
+
+
+
     </div>
       <el-input placeholder="Search with Shipment Number" prefix-icon="el-icon-search"
       v-model="searchNum" clearable class="side-table-filter">
@@ -62,82 +70,112 @@ import Bus from '../bus.js'
       return {
         tableData: [{
           shipmentNum: '5503020090',
-          from: 'Yantian',
+          from: 'Gaoxiong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
+          containerNum: '2',
           mapLoc: [32.9081494,-118.1919],
           mapZoom: 8,
           severityNum: '1'
         }, {
           shipmentNum: '5503020091',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
+          from: 'Rotterdam',
+          to: 'Charleston',
+          destination: 'Charlotte',
+          containerNum: '5',
           mapLoc: [32.8346634,-79.8785019],
-          mapZoom: 14,
+          mapZoom: 12,
           severityNum: '2',
-        },{
+        },
+        {
           shipmentNum: '5503020092',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
+          from: 'Rotterdam',
+          to: 'Huston',
+          destination: 'McAllen',
+          containerNum: '3',
+          mapLoc: [27.886201,
+                    -94.090988],
+          mapZoom: 8,
           severityNum: '3'
-        }, {
+        },
+        {
+          shipmentNum: '5503020095',
+          from: 'Rotterdam',
+          to: 'Huston',
+          destination: 'Edinburg',
+          containerNum: '1',
+          mapLoc: [27.886201,-94.090988],
+          mapZoom: 9,
+          severityNum: '3'
+        },
+        {
           shipmentNum: '5503020093',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
+          containerNum: '6',
           severityNum: '4'
         },{
           shipmentNum: '5403020094',
           from: 'Hong Kong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
+          containerNum: '1',
           severityNum: '5'
         }],
         allData: [{
           shipmentNum: '5503020090',
-          from: 'Yantian',
+          from: 'Gaoxiong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
-          mapLoc: [33.7303,-118.1919],
+          containerNum: '2',
+          mapLoc: [32.9081494,-118.1919],
           mapZoom: 8,
           severityNum: '1'
         }, {
           shipmentNum: '5503020091',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
+          from: 'Rotterdam',
+          to: 'Charleston',
+          destination: 'Charlotte',
+          containerNum: '5',
           mapLoc: [32.8346634,-79.8785019],
-          mapZoom: 14,
+          mapZoom: 12,
           severityNum: '2',
-        },{
+        },
+        {
           shipmentNum: '5503020092',
-          from: 'Yantian',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '12',
+          from: 'Rotterdam',
+          to: 'Huston',
+          destination: 'McAllen',
+          containerNum: '3',
+          mapLoc: [27.886201,
+                    -94.090988],
+          mapZoom: 8,
           severityNum: '3'
-        }, {
+        },
+        {
+          shipmentNum: '5503020095',
+          from: 'Rotterdam',
+          to: 'Huston',
+          destination: 'Edinburg',
+          containerNum: '1',
+          mapLoc: [27.886201,-94.090988],
+          mapZoom: 9,
+          severityNum: '3'
+        },
+        {
           shipmentNum: '5503020093',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
+          containerNum: '6',
           severityNum: '4'
         },{
           shipmentNum: '5403020094',
           from: 'Hong Kong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '12',
+          containerNum: '1',
           severityNum: '5'
         }],
         currentRow: null,
@@ -170,9 +208,6 @@ import Bus from '../bus.js'
         }
         this.tableData = nowData;
       },
-      setCurrent(row) {
-        this.$refs.singleTable.setCurrentRow(row);
-      },
       handleCurrentChange(val) {
         this.currentRow = val;
       },
@@ -192,7 +227,7 @@ import Bus from '../bus.js'
 <style scoped>
   .side{
     width: 100%;
-    height: 1000px;
+    height: 90vh;
     background-color: #242243;
 
   }
@@ -246,7 +281,8 @@ import Bus from '../bus.js'
   }
 
   .filter-buttons .el-button{
-      padding:25px 35px;
+      width:98%;
+      margin:0 auto;
       font-size:3.5rem;
       color: #fff;
       border: 0px;

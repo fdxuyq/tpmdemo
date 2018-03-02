@@ -2,15 +2,16 @@
 
     <div id="myMap" >
 
-      <v-map ref="map" style="height: 700px" :zoom="zoom" :center="center">
+      <v-map ref="map" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
      <!--    <v-marker :lat-lng="marker" @l-click="dialogVisible = true;">
          </v-marker> -->
        <!--  <v-geo-json :geojson="truckPoint.geojson" :options="truckPoint.options"></v-geo-json>-->
         <v-geo-json :geojson="truckRoute.geojson" :options="truckRoute.options"></v-geo-json>
-        <v-geo-json :geojson="terminal.geojson" :options="terminal.options"></v-geo-json>
-        <v-geo-json :geojson="campus.geojson" :options="campus.options"></v-geo-json>
+        <v-geo-json :geojson="fence.geojson" :options="fence.options"></v-geo-json>
+<!--         <v-geo-json :geojson="campus.geojson" :options="campus.options"></v-geo-json> -->
         <v-geo-json :geojson="ship.geojson" :options="ship.options"></v-geo-json>
+        <v-geo-json :geojson="shipRoute.geojson" :options="shipRoute.options"></v-geo-json>
         <v-geo-json :geojson="truck.geojson" :options="truck.options"></v-geo-json>
       </v-map>
 
@@ -37,17 +38,17 @@ import { default as data } from '../assets/geojson/map-geojson.js';
 // import { default as data } from '../assets/geojson/inland-geojson.js';
 
 var shipIcon = L.icon({
-  iconUrl: 'ship.png',
-  iconSize: [30, 30],
-  iconAnchor: [16, 37],
-  popupAnchor: [0, -28]
+  iconUrl: 'markerShip.png',
+  iconSize: [48,48],
+  iconAnchor: [24,48],
+  popupAnchor: [0,-48]
 });
 
 var truckIcon = L.icon({
-  iconUrl: 'truck.png',
-  iconSize: [30, 30],
-  iconAnchor: [16, 37],
-  popupAnchor: [0, -28]
+  iconUrl: 'markerTruck.png',
+  iconSize: [48,48],
+  iconAnchor: [24,48],
+  popupAnchor: [0,-48]
 });
 
 function onEachFeature(feature, layer) {
@@ -124,11 +125,11 @@ export default {
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       // marker: L.latLng(32.8346634,-79.8785019),
-      polyline: {
-        type: "polyline",
-        latlngs: [[32.8346634,-79.8785019],[32.8349686,-79.8769913],[32.8351746,-79.8761444],[32.8357887,-79.8755569],[32.8361206,-79.875351],[32.8367119,-79.8749466]],
-        color: "green"
-      },
+      // polyline: {
+      //   type: "polyline",
+      //   latlngs: [[32.8346634,-79.8785019],[32.8349686,-79.8769913],[32.8351746,-79.8761444],[32.8357887,-79.8755569],[32.8361206,-79.875351],[32.8367119,-79.8749466]],
+      //   color: "green"
+      // },
       // truckPoint: {
       //   geojson: data.truckPoint,
       //   options: {
@@ -137,15 +138,15 @@ export default {
       //     },
       //   }
       // },
-      campus: {
-        geojson:  data.campus,
-        options: {
-          style: function (feature) {
-            return feature.properties && feature.properties.style;
-          },
-          onEachFeature: onEachFeature
-        }
-      },
+      // campus: {
+      //   geojson:  data.campus,
+      //   options: {
+      //     style: function (feature) {
+      //       return feature.properties && feature.properties.style;
+      //     },
+      //     onEachFeature: onEachFeature
+      //   }
+      // },
       // terminal: {
       //   geojson: data.terminal,
       //   options: {
@@ -165,21 +166,26 @@ export default {
       //     }
       //   }
       // },
-      terminal: {
-        geojson: data.terminal,
-        options: {
-          style: function (feature) {
-            return feature.properties && feature.properties.style;
-          },
-          onEachFeature: onEachFeature
+      // terminal: {
+      //   geojson: data.terminal,
+      //   options: {
+      //     style: function (feature) {
+      //       return feature.properties && feature.properties.style;
+      //     },
+      //     onEachFeature: onEachFeature
 
-        }
-      },
+      //   }
+      // },
       truckRoute: {
         geojson: data.truckRoute,
         options: {
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng);
+          },
+          style: function() {
+            return {
+              weight: 1
+            }
           }
         }
       },
@@ -192,7 +198,11 @@ export default {
           onEachFeature: onEachFeature,
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {icon: truckIcon});
-          }
+            // if (L.zoom < 10) {
+            //   this.setOpacity(0);
+            // }
+          },
+
         }
       },
       ship: {
@@ -207,6 +217,37 @@ export default {
           }
         }
       },
+      shipRoute: {
+        geojson: data.shipRoute,
+        options: {
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng);
+          },
+          style: function() {
+            return {
+              weight: 1,
+              color: "green",
+              dashArray: '10,5'
+            }
+          },
+          onEachFeature: onEachFeature
+        }
+      },
+      fence: {
+        geojson: data.fence,
+        options: {
+          style: function(){
+            return {
+              weight: 1,
+              color: "#999",
+              opacity: 1,
+              fillColor: "#FF0000",
+              fillOpacity: 0.6
+            }
+          },
+          onEachFeature: onEachFeature
+        }
+      },
       dialogVisible: false
     }
   },
@@ -215,6 +256,13 @@ export default {
       this.center = mapLoc;
       this.zoom = mapZoom;
     })
+  },
+  methods: {
+    setHidden: function(zoomLevel){
+      if (this.zoom < zoomLevel) {
+        setOpacity(0);
+      }
+    }
   }
 }
 
@@ -222,7 +270,7 @@ export default {
 
 <style>
   #myMap {
-  height: 700px;
+  height: 80vh;
   margin-top: 20px;
   }
   .popup {
