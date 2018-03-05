@@ -1,7 +1,7 @@
 <template>
   <div class="side">
   <div class="side-content">
-    <h2 class="side-title">Overview of all your shipments</h2>
+    <h2 class="side-title">Shipments Overview</h2>
     <div class="side-figure-wrapper">
       <el-row>
         <el-col :span="8" class="side-figure">
@@ -70,21 +70,23 @@ import Bus from '../bus.js'
       return {
         tableData: [{
           shipmentNum: '5503020090',
-          from: 'Gaoxiong',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '2',
-          mapLoc: [32.9081494,-118.1919],
-          mapZoom: 8,
+          from: 'Charleston',
+          to: 'Rotterdam',
+          destination: 'Rotterdam',
+          containerNum: '1',
+          mapLoc: [32.8346634,-79.8785019],
+          mapZoom: 12,
+          mapLocId: 1,
           severityNum: '1'
         }, {
           shipmentNum: '5503020091',
-          from: 'Rotterdam',
-          to: 'Charleston',
-          destination: 'Charlotte',
-          containerNum: '5',
-          mapLoc: [32.8346634,-79.8785019],
-          mapZoom: 12,
+          from: 'Savannah',
+          to: 'Huston',
+          destination: 'McAllen',
+          containerNum: '3',
+          mapLoc: [28.980266666666665,-94.58271666666667],
+          mapZoom: 8,
+          mapLocId: 2,
           severityNum: '2',
         },
         {
@@ -93,53 +95,117 @@ import Bus from '../bus.js'
           to: 'Huston',
           destination: 'McAllen',
           containerNum: '3',
-          mapLoc: [27.886201,
-                    -94.090988],
-          mapZoom: 8,
-          severityNum: '3'
-        },
-        {
-          shipmentNum: '5503020095',
-          from: 'Rotterdam',
-          to: 'Huston',
-          destination: 'Edinburg',
-          containerNum: '1',
-          mapLoc: [27.886201,-94.090988],
+          mapLoc: [40.51745,-73.30651],
           mapZoom: 9,
+          mapLocId: 3,
           severityNum: '3'
         },
         {
           shipmentNum: '5503020093',
+          from: 'Rotterdam',
+          to: 'Houston',
+          destination: 'Edinburg',
+          containerNum: '4',
+          mapLoc: [36.927355,-76.329735],
+          mapZoom: 8,
+          mapLocId: 4,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020094',
+          from: 'Rotterdam',
+          to: 'Savannah',
+          destination: 'Edinburg',
+          containerNum: '5',
+          mapLoc: [31.7961979,-81.4869995],
+          mapZoom: 8,
+          mapLocId: 5,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020095',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
           containerNum: '6',
+          mapLoc: [50.050745,-2.6518],
+          mapZoom: 8,
+          mapLocId: 1,
           severityNum: '4'
         },{
-          shipmentNum: '5403020094',
+          shipmentNum: '5403020096',
           from: 'Hong Kong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '1',
+          containerNum: '7',
+          mapLoc: [33.840828333333334, -76.20225],
+          mapZoom: 8,
+          mapLocId: 2,
+          severityNum: '5'
+        },
+        {
+          shipmentNum: '5503020097',
+          from: 'Rotterdam',
+          to: 'Savannah',
+          destination: 'Edinburg',
+          containerNum: '8',
+          mapLoc: [32.124066666666664, -81.1355],
+          mapZoom: 8,
+          mapLocId: 3,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020098',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '9',
+          mapLoc: [40.665915,-74.14422333333333],
+          mapZoom: 8,
+          mapLocId: 4,
+          severityNum: '4'
+        },{
+          shipmentNum: '5403020099',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '10',
+          mapLoc: [33.32706666666667,-35.875033333333334],
+          mapZoom: 8,
+          mapLocId: 5,
+          severityNum: '5'
+        },{
+          shipmentNum: '5403020100',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '10',
+          mapLoc: [31.98743,-80.68986666666666],
+          mapZoom: 8,
+          mapLocId: 5,
           severityNum: '5'
         }],
+
+
         allData: [{
           shipmentNum: '5503020090',
-          from: 'Gaoxiong',
-          to: 'Long Beach',
-          destination: 'Los Angeles',
-          containerNum: '2',
-          mapLoc: [32.9081494,-118.1919],
-          mapZoom: 8,
+          from: 'Charleston',
+          to: 'Rotterdam',
+          destination: 'Rotterdam',
+          containerNum: '1',
+          mapLoc: [32.8346634,-79.8785019],
+          mapZoom: 12,
+          mapLocId: 1,
           severityNum: '1'
         }, {
           shipmentNum: '5503020091',
-          from: 'Rotterdam',
-          to: 'Charleston',
-          destination: 'Charlotte',
-          containerNum: '5',
-          mapLoc: [32.8346634,-79.8785019],
-          mapZoom: 12,
+          from: 'Savannah',
+          to: 'Huston',
+          destination: 'McAllen',
+          containerNum: '3',
+          mapLoc: [28.980266666666665,-94.58271666666667],
+          mapZoom: 8,
+          mapLocId: 2,
           severityNum: '2',
         },
         {
@@ -148,34 +214,94 @@ import Bus from '../bus.js'
           to: 'Huston',
           destination: 'McAllen',
           containerNum: '3',
-          mapLoc: [27.886201,
-                    -94.090988],
+          mapLoc: [-74.15291166666667,40.68550333333334],
           mapZoom: 8,
-          severityNum: '3'
-        },
-        {
-          shipmentNum: '5503020095',
-          from: 'Rotterdam',
-          to: 'Huston',
-          destination: 'Edinburg',
-          containerNum: '1',
-          mapLoc: [27.886201,-94.090988],
-          mapZoom: 9,
+          mapLocId: 3,
           severityNum: '3'
         },
         {
           shipmentNum: '5503020093',
+          from: 'Rotterdam',
+          to: 'Houston',
+          destination: 'Edinburg',
+          containerNum: '4',
+          mapLoc: [-76.329735,36.927355],
+          mapZoom: 8,
+          mapLocId: 4,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020094',
+          from: 'Rotterdam',
+          to: 'Savannah',
+          destination: 'Edinburg',
+          containerNum: '5',
+          mapLoc: [-94.99217,29.682103333333334],
+          mapZoom: 8,
+          mapLocId: 5,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020095',
           from: 'Yantian',
           to: 'Long Beach',
           destination: 'Los Angeles',
           containerNum: '6',
+          mapLoc: [50.050745,-2.6518],
+          mapZoom: 8,
+          mapLocId: 1,
           severityNum: '4'
         },{
-          shipmentNum: '5403020094',
+          shipmentNum: '5403020096',
           from: 'Hong Kong',
           to: 'Long Beach',
           destination: 'Los Angeles',
-          containerNum: '1',
+          containerNum: '7',
+          mapLoc: [33.840828333333334, -76.20225],
+          mapZoom: 8,
+          mapLocId: 2,
+          severityNum: '5'
+        },
+        {
+          shipmentNum: '5503020097',
+          from: 'Rotterdam',
+          to: 'Savannah',
+          destination: 'Edinburg',
+          containerNum: '8',
+          mapLoc: [32.124066666666664, -81.1355],
+          mapZoom: 8,
+          mapLocId: 3,
+          severityNum: '3'
+        },
+        {
+          shipmentNum: '5503020098',
+          from: 'Yantian',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '9',
+          mapLoc: [40.665915,-74.14422333333333],
+          mapZoom: 8,
+          mapLocId: 4,
+          severityNum: '4'
+        },{
+          shipmentNum: '5403020099',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '10',
+          mapLoc: [33.32706666666667,-35.875033333333334],
+          mapZoom: 8,
+          mapLocId: 5,
+          severityNum: '5'
+        },{
+          shipmentNum: '5403020100',
+          from: 'Hong Kong',
+          to: 'Long Beach',
+          destination: 'Los Angeles',
+          containerNum: '10',
+          mapLoc: [31.98743,-80.68986666666666],
+          mapZoom: 8,
+          mapLocId: 5,
           severityNum: '5'
         }],
         currentRow: null,
@@ -213,7 +339,7 @@ import Bus from '../bus.js'
       },
       changeMap(row) {
         // console.log(row.shipmentNum);
-        Bus.$emit('on',row.mapLoc,row.mapZoom);
+        Bus.$emit('on',row.mapLoc,row.mapZoom,row.mapLocId);
       }
     }
 
@@ -320,28 +446,5 @@ import Bus from '../bus.js'
     margin: 30px 0 10px 0;
   }
 
-.stat-circle
-{
-  circle.bg
-  {
-    fill: none;
-    stroke: #f1f1f1;
-    stroke-width: 2;
-  }
-  circle.progress
-  {
-    fill: none;
-    stroke: #2ecc71;
-    stroke-width: 2;
-    stroke-dasharray: 51 51;
-    stroke-dashoffset: -51;
-    stroke-linecap: round;
-  }
-  text
-  {
-    font-size: 3px;
-    text-anchor: middle;
-    fill: #555;
-  }
-}
+
 </style>

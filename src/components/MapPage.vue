@@ -1,16 +1,17 @@
 <template>
 
     <div id="myMap" >
-
       <v-map ref="map" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
      <!--    <v-marker :lat-lng="marker" @l-click="dialogVisible = true;">
          </v-marker> -->
        <!--  <v-geo-json :geojson="truckPoint.geojson" :options="truckPoint.options"></v-geo-json>-->
-        <v-geo-json :geojson="truckRoute.geojson" :options="truckRoute.options"></v-geo-json>
+        <v-geo-json :geojson="truckRoute.geojson" :options="truckRoute.options" :focus="focusLocId"></v-geo-json>
         <v-geo-json :geojson="fence.geojson" :options="fence.options"></v-geo-json>
 <!--         <v-geo-json :geojson="campus.geojson" :options="campus.options"></v-geo-json> -->
         <v-geo-json :geojson="ship.geojson" :options="ship.options"></v-geo-json>
+        <v-geo-json :geojson="shipStart.geojson" :options="shipStart.options"></v-geo-json>
+        <v-geo-json :geojson="shipEnd.geojson" :options="shipEnd.options"></v-geo-json>
         <v-geo-json :geojson="shipRoute.geojson" :options="shipRoute.options"></v-geo-json>
         <v-geo-json :geojson="truck.geojson" :options="truck.options"></v-geo-json>
       </v-map>
@@ -30,11 +31,19 @@
 <script>
 import Vue from 'vue'
 import Vue2Leaflet from 'vue2-leaflet';
+// import polylineDecorator from 'leaflet-polylinedecorator'
+
 import PopupContent from './PopupContent';
 import TooltipContent from './TooltipContent';
+// import FilterContent from './FilterContent';
 import Bus from '../bus.js'
 
 import { default as data } from '../assets/geojson/map-geojson.js';
+import { default as story1 } from '../assets/geojson/story-1-geojson.js';
+import { default as story2 } from '../assets/geojson/story-2-geojson.js';
+import { default as story3 } from '../assets/geojson/story-3-geojson.js';
+import { default as story4 } from '../assets/geojson/story-4-geojson.js';
+import { default as story5 } from '../assets/geojson/story-5-geojson.js';
 // import { default as data } from '../assets/geojson/inland-geojson.js';
 
 var shipIcon = L.icon({
@@ -50,14 +59,27 @@ var truckIcon = L.icon({
   iconAnchor: [24,48],
   popupAnchor: [0,-48]
 });
+var startIcon = L.icon({
+  iconUrl: 'markerStart.png',
+  iconSize: [48,48],
+  iconAnchor: [24,48],
+  popupAnchor: [0,-48]
+});
+var endIcon = L.icon({
+  iconUrl: 'markerEnd.png',
+  iconSize: [48,48],
+  iconAnchor: [24,48],
+  popupAnchor: [0,-48]
+});
 
 function onEachFeature(feature, layer) {
   // var that = this;
+  //For display Popup Content
   let popupContent = Vue.extend(PopupContent);
   let popup = new popupContent({
     propsData: {
       data: {
-        type: feature.properties.popupContent
+        type: feature.properties.popupContent,
       }
     }
   });
@@ -69,7 +91,7 @@ function onEachFeature(feature, layer) {
   if(popup.data.type != null) {
     layer.bindPopup(popup.$mount().$el, popupOption);
   }
-  layer.on('mouseover', function (e) {
+  layer.on('mouseover', function () {
       this.openPopup();
   });
 
@@ -86,6 +108,19 @@ function onEachFeature(feature, layer) {
   }
 
 }
+
+// function filterRoute(feature, layer) {
+//   let filterFocus = Vue.extend(filterContent);
+//   let filterId = new filterFocus({
+//     propsData: {
+//       data: {
+//         type: feature.properties.focusId,
+//       }
+//     }
+//   });
+//   let mapLocFocus = myMap.data.focusLocId;
+//   console.log(mapLocFocus);
+// }
 
 
 // function onEachFeature(feature, layer) {
@@ -124,69 +159,30 @@ export default {
       center: [20.7303,-155.1919],
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      // marker: L.latLng(32.8346634,-79.8785019),
-      // polyline: {
-      //   type: "polyline",
-      //   latlngs: [[32.8346634,-79.8785019],[32.8349686,-79.8769913],[32.8351746,-79.8761444],[32.8357887,-79.8755569],[32.8361206,-79.875351],[32.8367119,-79.8749466]],
-      //   color: "green"
-      // },
-      // truckPoint: {
-      //   geojson: data.truckPoint,
-      //   options: {
-      //     pointToLayer: function (feature, latlng) {
-      //       return L.marker(latlng, {icon: truckIcon});
-      //     },
-      //   }
-      // },
-      // campus: {
-      //   geojson:  data.campus,
-      //   options: {
-      //     style: function (feature) {
-      //       return feature.properties && feature.properties.style;
-      //     },
-      //     onEachFeature: onEachFeature
-      //   }
-      // },
-      // terminal: {
-      //   geojson: data.terminal,
-      //   options: {
-      //     style: function (feature) {
-      //       return feature.properties && feature.properties.style;
-      //     },
-      //     onEachFeature: onEachFeature,
-      //     pointToLayer: function (feature, latlng) {
-      //       return L.circleMarker(latlng, {
-      //         radius: 3,
-      //         fillColor: "#ff7800",
-      //         color: "#000",
-      //         weight: 1,
-      //         opacity: 1,
-      //         fillOpacity: 0.4
-      //       });
-      //     }
-      //   }
-      // },
-      // terminal: {
-      //   geojson: data.terminal,
-      //   options: {
-      //     style: function (feature) {
-      //       return feature.properties && feature.properties.style;
-      //     },
-      //     onEachFeature: onEachFeature
+      focusLocId: '',
 
-      //   }
-      // },
       truckRoute: {
         geojson: data.truckRoute,
         options: {
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng);
+            console.log(this.fId);
           },
+          // filter: function (feature, layer, focusLocId) {
+          //   if(focusLocId != null) {
+          //     console.log('Existed!');
+          //   }
+          //   if (feature.properties.focusId == this.focusLocId) {
+          //     console.log('success');
+          //     console.log(this.focusLocId);
+          //     return true;
+          //   }
+          // },
           style: function() {
             return {
-              weight: 1
+              color: '#59F9FC'
             }
-          }
+          },
         }
       },
       truck: {
@@ -217,6 +213,30 @@ export default {
           }
         }
       },
+      shipStart: {
+        geojson: data.shipRouteStart,
+        options: {
+          style: function (feature) {
+            return feature.properties && feature.properties.style;
+          },
+          onEachFeature: onEachFeature,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {icon: startIcon});
+          }
+        }
+      },
+      shipEnd: {
+        geojson: data.shipRouteEnd,
+        options: {
+          style: function (feature) {
+            return feature.properties && feature.properties.style;
+          },
+          onEachFeature: onEachFeature,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {icon: endIcon});
+          }
+        }
+      },
       shipRoute: {
         geojson: data.shipRoute,
         options: {
@@ -225,9 +245,7 @@ export default {
           },
           style: function() {
             return {
-              weight: 1,
-              color: "green",
-              dashArray: '10,5'
+              color: "yellow"
             }
           },
           onEachFeature: onEachFeature
@@ -252,17 +270,92 @@ export default {
     }
   },
   mounted() {
-    Bus.$on('on',(mapLoc,mapZoom) => {
+    Bus.$on('on',(mapLoc,mapZoom,mapLocId) => {
       this.center = mapLoc;
       this.zoom = mapZoom;
-    })
-  },
-  methods: {
-    setHidden: function(zoomLevel){
-      if (this.zoom < zoomLevel) {
-        setOpacity(0);
+      this.focusLocId = mapLocId;
+      console.log(this.focusLocId);
+      switch(this.focusLocId){
+        case 1:
+          this.truckRoute.geojson = story1.truckRoute;
+          this.shipRoute.geojson = story1.shipRoute;
+          this.shipStart.geojson = story1.shipRouteStart;
+          this.ship.geojson = story1.ship;
+          break;
+        case 2:
+          this.truckRoute.geojson = story2.truckRoute;
+          this.shipRoute.geojson = story2.shipRoute;
+          this.shipStart.geojson = story2.shipRouteStart;
+          this.ship.geojson = story2.ship;
+          this.truck.geojson = story2.truck;
+
+          break;
+        case 3:
+          this.truckRoute.geojson = story3.truckRoute;
+          this.shipRoute.geojson = story3.shipRoute;
+          this.shipStart.geojson = story3.shipRouteStart;
+          this.ship.geojson = story3.ship;
+          this.truck.geojson = story3.truck;
+          break;
+        case 4:
+          this.truckRoute.geojson = story4.truckRoute;
+          this.shipRoute.geojson = story4.shipRoute;
+          this.shipStart.geojson = story4.shipRouteStart;
+          this.ship.geojson = story4.ship;
+          this.truck.geojson = story4.truck;
+          break;
+        case 5:
+          this.truckRoute.geojson = story5.truckRoute;
+          this.shipRoute.geojson = story5.shipRoute;
+          this.shipStart.geojson = story5.shipRouteStart;
+          this.ship.geojson = story5.ship;
+          this.truck.geojson = story5.truck;
+          break;
+
+
       }
-    }
+      // if(this.focusLocId == 2){
+      //   this.truckRoute.geojson = data.truckR1
+      // }
+
+      // this.truckRoute.fId = mapLocId;
+      // console.log(this.focusLocId);
+      // console.log(this.truckRoute.geojson.features.properties.focusId);
+
+
+      // console.log(this.truckRoute.geojson.features.properties);
+      // this.truckRoute.geojson.features.properties.display = false;
+    } )
+  },
+  // computed: {
+  //   truckRoute() {
+  //       const self = this
+  //       geojson: data.truckRoute,
+  //       options: {
+  //         pointToLayer: function (feature, latlng) {
+  //           return L.marker(latlng);
+  //         },
+  //         filter() {
+  //           console.log(self.focusLocId);
+  //         },
+  //         // filter: function (feature, layer) {
+  //         //   if (feature.properties.record == 5) {
+  //         //     return true;
+  //         //   }
+  //         // },
+  //         style: function() {
+  //           return {
+  //             color: '#59F9FC'
+  //           }
+  //         },
+  //       }
+  //     },
+  // },
+  methods: {
+    // filterRoute: function(feature, focus){
+    //   console.log(this.focusLocId);
+    // }
+
   }
 }
 
