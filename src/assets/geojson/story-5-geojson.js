@@ -38,6 +38,22 @@ export default {
         ]
 
     },
+    shipRouteEnd: {
+        "type": "FeatureCollection",
+        "features": [{
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-0.246173333333333,37.855785]
+            },
+            "type": "Feature",
+            "properties": {
+                "tooltipContent": 'End Point from Savanna'
+            },
+            "id": 61
+        }
+        ]
+
+    },
     shipRoute: {
         "type": "FeatureCollection",
         "features": [{
