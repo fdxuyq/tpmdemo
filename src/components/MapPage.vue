@@ -3,12 +3,10 @@
     <div id="myMap" >
       <v-map ref="map" :zoom="zoom" :center="center">
         <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-     <!--    <v-marker :lat-lng="marker" @l-click="dialogVisible = true;">
-         </v-marker> -->
-       <!--  <v-geo-json :geojson="truckPoint.geojson" :options="truckPoint.options"></v-geo-json>-->
+
         <v-geo-json :geojson="truckRoute.geojson" :options="truckRoute.options" :focus="focusLocId"></v-geo-json>
         <v-geo-json :geojson="fence.geojson" :options="fence.options"></v-geo-json>
-<!--         <v-geo-json :geojson="campus.geojson" :options="campus.options"></v-geo-json> -->
+
         <v-geo-json :geojson="ship.geojson" :options="ship.options"></v-geo-json>
         <v-geo-json :geojson="shipStart.geojson" :options="shipStart.options"></v-geo-json>
         <v-geo-json :geojson="shipEnd.geojson" :options="shipEnd.options"></v-geo-json>
@@ -31,11 +29,10 @@
 <script>
 import Vue from 'vue'
 import Vue2Leaflet from 'vue2-leaflet';
-// import polylineDecorator from 'leaflet-polylinedecorator'
 
 import PopupContent from './PopupContent';
 import TooltipContent from './TooltipContent';
-// import FilterContent from './FilterContent';
+
 import Bus from '../bus.js'
 
 import { default as data } from '../assets/geojson/map-geojson.js';
@@ -44,7 +41,7 @@ import { default as story2 } from '../assets/geojson/story-2-geojson.js';
 import { default as story3 } from '../assets/geojson/story-3-geojson.js';
 import { default as story4 } from '../assets/geojson/story-4-geojson.js';
 import { default as story5 } from '../assets/geojson/story-5-geojson.js';
-// import { default as data } from '../assets/geojson/inland-geojson.js';
+
 
 var shipIcon = L.icon({
   iconUrl: 'markerShip.png',
@@ -109,37 +106,9 @@ function onEachFeature(feature, layer) {
 
 }
 
-// function filterRoute(feature, layer) {
-//   let filterFocus = Vue.extend(filterContent);
-//   let filterId = new filterFocus({
-//     propsData: {
-//       data: {
-//         type: feature.properties.focusId,
-//       }
-//     }
-//   });
-//   let mapLocFocus = myMap.data.focusLocId;
-//   console.log(mapLocFocus);
-// }
 
 
-// function onEachFeature(feature, layer) {
-//   let popupContent = Vue.extend(PopupContent);
-//   let popup = new popupContent({ propsData: { data: { type: feature.type, color: 'blue'}}});
-//   layer.bindPopup(popup.$mount().$el);
-// }
 
-// var shipIcon = L.icon({
-//   iconUrl: 'ship.png',
-//   iconSize: [30, 30]
-// });
-
-// var truckIcon = L.icon({
-//   iconUrl: 'truck.png',
-//   iconSize: [30, 30],
-//   iconAnchor: [16, 37],
-//   popupAnchor: [0, -28]
-// });
 
 export default {
   name: 'myMap',
@@ -160,13 +129,11 @@ export default {
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       focusLocId: '',
-
       truckRoute: {
         geojson: data.truckRoute,
         options: {
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng);
-            console.log(this.fId);
           },
           // filter: function (feature, layer, focusLocId) {
           //   if(focusLocId != null) {
@@ -194,9 +161,6 @@ export default {
           onEachFeature: onEachFeature,
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {icon: truckIcon});
-            // if (L.zoom < 10) {
-            //   this.setOpacity(0);
-            // }
           },
 
         }
@@ -274,7 +238,7 @@ export default {
       this.center = mapLoc;
       this.zoom = mapZoom;
       this.focusLocId = mapLocId;
-      console.log(this.focusLocId);
+      // console.log(this.focusLocId);
       switch(this.focusLocId){
         case 1:
           this.truckRoute.geojson = story1.truckRoute;
