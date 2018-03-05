@@ -354,6 +354,7 @@ import Bus from '../bus.js'
   .side{
     width: 100%;
     height: 90vh;
+    min-height: 1000px;
     background-color: #242243;
 
   }

@@ -62,10 +62,10 @@ export default {
             "type": "Feature",
             "properties": {
                 "popupContent": [
-                    ["Name", "OOCL EUROPE"],
+                    ["Name", "Truck CHS315"],
                     ["IMO", "9300805"],
                     ["MMSI", "477214700"],
-                    ["Destination", "USNYC"],
+                    ["Destination", "Challotee"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
                     ["Speed", "20.9km"]
                 ]
