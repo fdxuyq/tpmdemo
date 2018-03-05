@@ -6,7 +6,7 @@
       <el-row>
         <el-col :span="8" class="side-figure">
            <div class="figure-circle">
-              <span>5</span>
+              <span>7</span>
            </div>
            <span class="figure-description">Potential Delay </span>
         </el-col>
@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="8" class="side-figure">
            <div class="figure-circle">
-              <span>7</span>
+              <span>5</span>
            </div>
            <span class="figure-description">Trucks</span>
         </el-col>
@@ -28,11 +28,11 @@
     <h3 class="side-section-title">Delay Shipment Severity</h3>
     <div class="filter-buttons">
       <el-row>
-         <el-col :span="4"><el-button class="filter-button-1" v-on:click="serverityFilter('0')">19</el-button></el-col>
-         <el-col :span="4"><el-button class="filter-button-2" v-on:click="serverityFilter('1')">3</el-button></el-col>
-         <el-col :span="4"><el-button class="filter-button-3" v-on:click="serverityFilter('2')">4</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-1" v-on:click="serverityFilter('0')">11</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-2" v-on:click="serverityFilter('1')">1</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-3" v-on:click="serverityFilter('2')">3</el-button></el-col>
          <el-col :span="4"><el-button class="filter-button-4" v-on:click="serverityFilter('3')">4</el-button></el-col>
-         <el-col :span="4"><el-button class="filter-button-5" v-on:click="serverityFilter('4')">4</el-button></el-col>
+         <el-col :span="4"><el-button class="filter-button-5" v-on:click="serverityFilter('4')">2</el-button></el-col>
          <el-col :span="4"><el-button class="filter-button-6" v-on:click="serverityFilter('5')">1</el-button></el-col>
        </el-row>
 
@@ -91,9 +91,9 @@ import Bus from '../bus.js'
         },
         {
           shipmentNum: '5503020092',
-          from: 'Rotterdam',
-          to: 'Huston',
-          destination: 'McAllen',
+          from: 'New York',
+          to: 'Quebec',
+          destination: 'Quebec',
           containerNum: '3',
           mapLoc: [40.51745,-73.30651],
           mapZoom: 9,
@@ -102,9 +102,9 @@ import Bus from '../bus.js'
         },
         {
           shipmentNum: '5503020093',
-          from: 'Rotterdam',
-          to: 'Houston',
-          destination: 'Edinburg',
+          from: 'Norfork',
+          to: 'Panama',
+          destination: 'Sydney',
           containerNum: '4',
           mapLoc: [36.927355,-76.329735],
           mapZoom: 8,
@@ -113,7 +113,7 @@ import Bus from '../bus.js'
         },
         {
           shipmentNum: '5503020094',
-          from: 'Rotterdam',
+          from: 'Houston',
           to: 'Savannah',
           destination: 'Edinburg',
           containerNum: '5',
@@ -173,7 +173,7 @@ import Bus from '../bus.js'
           mapLoc: [33.32706666666667,-35.875033333333334],
           mapZoom: 8,
           mapLocId: 5,
-          severityNum: '5'
+          severityNum: '2'
         },{
           shipmentNum: '5403020100',
           from: 'Hong Kong',
@@ -183,7 +183,7 @@ import Bus from '../bus.js'
           mapLoc: [31.98743,-80.68986666666666],
           mapZoom: 8,
           mapLocId: 5,
-          severityNum: '5'
+          severityNum: '2'
         }],
 
 
@@ -210,33 +210,33 @@ import Bus from '../bus.js'
         },
         {
           shipmentNum: '5503020092',
-          from: 'Rotterdam',
-          to: 'Huston',
-          destination: 'McAllen',
+          from: 'New York',
+          to: 'Quebec',
+          destination: 'Quebec',
           containerNum: '3',
-          mapLoc: [-74.15291166666667,40.68550333333334],
-          mapZoom: 8,
+          mapLoc: [40.51745,-73.30651],
+          mapZoom: 9,
           mapLocId: 3,
           severityNum: '3'
         },
         {
           shipmentNum: '5503020093',
-          from: 'Rotterdam',
-          to: 'Houston',
-          destination: 'Edinburg',
+          from: 'Norfork',
+          to: 'Panama',
+          destination: 'Sydney',
           containerNum: '4',
-          mapLoc: [-76.329735,36.927355],
+          mapLoc: [36.927355,-76.329735],
           mapZoom: 8,
           mapLocId: 4,
           severityNum: '3'
         },
         {
           shipmentNum: '5503020094',
-          from: 'Rotterdam',
+          from: 'Houston',
           to: 'Savannah',
           destination: 'Edinburg',
           containerNum: '5',
-          mapLoc: [-94.99217,29.682103333333334],
+          mapLoc: [31.7961979,-81.4869995],
           mapZoom: 8,
           mapLocId: 5,
           severityNum: '3'
@@ -292,7 +292,7 @@ import Bus from '../bus.js'
           mapLoc: [33.32706666666667,-35.875033333333334],
           mapZoom: 8,
           mapLocId: 5,
-          severityNum: '5'
+          severityNum: '2'
         },{
           shipmentNum: '5403020100',
           from: 'Hong Kong',
@@ -302,7 +302,7 @@ import Bus from '../bus.js'
           mapLoc: [31.98743,-80.68986666666666],
           mapZoom: 8,
           mapLocId: 5,
-          severityNum: '5'
+          severityNum: '2'
         }],
         currentRow: null,
         searchNum: '',

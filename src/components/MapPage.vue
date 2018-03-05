@@ -281,6 +281,7 @@ export default {
           this.shipRoute.geojson = story1.shipRoute;
           this.shipStart.geojson = story1.shipRouteStart;
           this.ship.geojson = story1.ship;
+          this.truck.geojson = story1.truck;
           break;
         case 2:
           this.truckRoute.geojson = story2.truckRoute;
@@ -308,6 +309,7 @@ export default {
           this.truckRoute.geojson = story5.truckRoute;
           this.shipRoute.geojson = story5.shipRoute;
           this.shipStart.geojson = story5.shipRouteStart;
+          this.shipEnd.geojson = story5.shipRouteEnd;
           this.ship.geojson = story5.ship;
           this.truck.geojson = story5.truck;
           break;
@@ -318,13 +320,7 @@ export default {
       //   this.truckRoute.geojson = data.truckR1
       // }
 
-      // this.truckRoute.fId = mapLocId;
-      // console.log(this.focusLocId);
-      // console.log(this.truckRoute.geojson.features.properties.focusId);
 
-
-      // console.log(this.truckRoute.geojson.features.properties);
-      // this.truckRoute.geojson.features.properties.display = false;
     } )
   },
   // computed: {
@@ -364,6 +360,7 @@ export default {
 <style>
   #myMap {
   height: 80vh;
+  min-height: 650px;
   margin-top: 20px;
   }
   .popup {

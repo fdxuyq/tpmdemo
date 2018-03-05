@@ -1058,6 +1058,24 @@ export default {
         }, {
             "geometry": {
                 "type": "Point",
+                "coordinates": [-56.40277666666667,41.477356666666665
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "popupContent": [
+                    ["Name", "OOCL EUROPE"],
+                    ["IMO", "9300805"],
+                    ["MMSI", "477214700"],
+                    ["Destination", "USNYC"],
+                    ["ETA", "2017-07-11 22:00:00 UTC"],
+                    ["Speed", "20.9km"], "test.png"
+                ]
+            },
+            "id": 55
+        }, {
+            "geometry": {
+                "type": "Point",
                 "coordinates": [-2.6518,50.050745]
             },
             "type": "Feature",
@@ -1093,7 +1111,7 @@ export default {
         }, {
             "geometry": {
                 "type": "Point",
-                "coordinates": [-95.00232166666666,29.61263
+                "coordinates": [-78.31142166666666,12.368071666666667
                 ]
             },
             "type": "Feature",
@@ -1122,7 +1140,25 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
+                ]
+            },
+            "id": 76
+        }, {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-80.558725,11.690683333333334
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "popupContent": [
+                    ["Name", "OOCL EUROPE"],
+                    ["IMO", "9300805"],
+                    ["MMSI", "477214700"],
+                    ["Destination", "USNYC"],
+                    ["ETA", "2017-07-11 22:00:00 UTC"],
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 76
@@ -1141,7 +1177,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 77
@@ -1158,7 +1194,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USCHS"],
                     ["ETA", "2018-03-11 10:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 78
@@ -1175,27 +1211,10 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USORF"],
                     ["ETA", "2018-03-11 10:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 79
-        }, {
-            "geometry": {
-                "type": "Point",
-                "coordinates": [-80.68986666666666,31.98743]
-            },
-            "type": "Feature",
-            "properties": {
-                "popupContent": [
-                    ["Name", "OOCL EUROPE"],
-                    ["IMO", "9300805"],
-                    ["MMSI", "477214700"],
-                    ["Destination", "USORF"],
-                    ["ETA", "2018-03-11 10:00:00 UTC"],
-                    ["Speed", "20.9km"]
-                ]
-            },
-            "id": 80
         }
         ]
     },
@@ -1211,30 +1230,10 @@ export default {
                 "tooltipContent": 'Start Point'
             },
             "id": 61
-        }, {
-            "geometry": {
-                "type": "Point",
-                "coordinates": [-79.89359666666667,32.82956166666666]
-            },
-            "type": "Feature",
-            "properties": {
-                "tooltipContent": 'Start Point'
-            },
-            "id": 61
         },{
             "geometry": {
                 "type": "Point",
                 "coordinates": [-74.15291166666667,40.68550333333334]
-            },
-            "type": "Feature",
-            "properties": {
-                "tooltipContent": 'Start Point'
-            },
-            "id": 61
-        },{
-            "geometry": {
-                "type": "Point",
-                "coordinates": [-94.99191,29.682185]
             },
             "type": "Feature",
             "properties": {
@@ -2977,7 +2976,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 51
@@ -2994,7 +2993,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 52
@@ -3013,7 +3012,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"]
+                    ["Speed", "20.9km"], "test.png"
                 ]
             },
             "id": 54
