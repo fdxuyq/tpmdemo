@@ -14,7 +14,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "Rotterdam"],
                     ["ETA", "2018-03-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"]
+                    ["Speed", "20.9km"], "popup-details.png"]
             },
             "id": 51
          },

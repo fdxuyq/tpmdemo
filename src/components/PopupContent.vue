@@ -10,7 +10,7 @@
       class="map-popup"
       title="Vessel Details"
       :visible.sync="centerDialogVisible"
-      width="30%"
+      width="840px"
       append-to-body>
       <img :src="data.type[6]">
     </el-dialog>

@@ -1033,7 +1033,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 54
@@ -1052,7 +1052,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 55
@@ -1071,7 +1071,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 55
@@ -1089,7 +1089,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 58
@@ -1108,7 +1108,7 @@ export default {
         //             ["MMSI", "477214700"],
         //             ["Destination", "USNYC"],
         //             ["ETA", "2017-07-11 22:00:00 UTC"],
-        //             ["Speed", "20.9km"], "test.png"
+        //             ["Speed", "20.9km"], "popup-details.png"
         //         ]
         //     },
         //     "id": 74
@@ -1127,7 +1127,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 75
@@ -1146,7 +1146,7 @@ export default {
         //             ["MMSI", "477214700"],
         //             ["Destination", "USNYC"],
         //             ["ETA", "2017-07-11 22:00:00 UTC"],
-        //             ["Speed", "20.9km"], "test.png"
+        //             ["Speed", "20.9km"], "popup-details.png"
         //         ]
         //     },
         //     "id": 76
@@ -1165,7 +1165,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 76
@@ -1185,7 +1185,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 77
@@ -1203,7 +1203,7 @@ export default {
         //             ["MMSI", "477214700"],
         //             ["Destination", "USCHS"],
         //             ["ETA", "2018-03-11 10:00:00 UTC"],
-        //             ["Speed", "20.9km"], "test.png"
+        //             ["Speed", "20.9km"], "popup-details.png"
         //         ]
         //     },
         //     "id": 78
@@ -1220,7 +1220,7 @@ export default {
         //             ["MMSI", "477214700"],
         //             ["Destination", "USORF"],
         //             ["ETA", "2018-03-11 10:00:00 UTC"],
-        //             ["Speed", "20.9km"], "test.png"
+        //             ["Speed", "20.9km"], "popup-details.png"
         //         ]
         //     },
         //     "id": 79
@@ -2987,7 +2987,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 51
@@ -3004,7 +3004,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 52
@@ -3023,7 +3023,7 @@ export default {
                     ["MMSI", "477214700"],
                     ["Destination", "USNYC"],
                     ["ETA", "2017-07-11 22:00:00 UTC"],
-                    ["Speed", "20.9km"], "test.png"
+                    ["Speed", "20.9km"], "popup-details.png"
                 ]
             },
             "id": 54
